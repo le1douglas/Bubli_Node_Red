@@ -6,50 +6,5 @@
         "disabled": false,
         "info": "",
         "env": []
-    },
-    {
-        "id": "2fa4e7c7a3fcf2ea",
-        "type": "inject",
-        "z": "56f7088bd7b8cd6a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 460,
-        "y": 120,
-        "wires": [
-            [
-                "ad7a9cc54e8debaa"
-            ]
-        ]
-    },
-    {
-        "id": "ad7a9cc54e8debaa",
-        "type": "debug",
-        "z": "56f7088bd7b8cd6a",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 120,
-        "wires": []
     }
 ]
