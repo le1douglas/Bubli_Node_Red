@@ -40,16 +40,17 @@
         "id": "45b16927da32df19",
         "type": "debug",
         "z": "56f7088bd7b8cd6a",
-        "name": "debug 1",
+        "name": "debug 12",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 760,
-        "y": 200,
+        "y": 260,
         "wires": []
     }
 ]
