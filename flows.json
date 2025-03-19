@@ -8,6 +8,21 @@
         "env": []
     },
     {
+        "id": "bb1f05320e11b457",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://bubli.local:8086/",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
         "id": "830290675cb99f60",
         "type": "inject",
         "z": "56f7088bd7b8cd6a",
@@ -28,28 +43,50 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 280,
-        "y": 120,
+        "x": 160,
+        "y": 300,
         "wires": [
             [
-                "c897c48edb13b2a5"
+                "a6d1a317fd4bf593"
             ]
         ]
     },
     {
-        "id": "c897c48edb13b2a5",
-        "type": "debug",
+        "id": "02e14d5daf3bbfc5",
+        "type": "influxdb out",
         "z": "56f7088bd7b8cd6a",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 480,
-        "y": 120,
+        "influxdb": "bb1f05320e11b457",
+        "name": "",
+        "measurement": "new_measurement",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "bubli",
+        "bucket": "test_bucket",
+        "x": 560,
+        "y": 200,
         "wires": []
+    },
+    {
+        "id": "a6d1a317fd4bf593",
+        "type": "function",
+        "z": "56f7088bd7b8cd6a",
+        "name": "function 1",
+        "func": "msg.payload = [{\n    intValue: '10i',\n    numValue: 12,\n    randomValue: Math.random()*10,\n    strValue: \"message2\"\n},\n{\n    tag1:\"sensor1\",\n    tag2:\"device2\"\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "02e14d5daf3bbfc5"
+            ]
+        ]
     }
 ]
