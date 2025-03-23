@@ -3896,9 +3896,7 @@
         "x": 550,
         "y": 1220,
         "wires": [
-            [
-                "1d217e05e4f31827"
-            ],
+            [],
             [],
             []
         ]
@@ -3919,8 +3917,7 @@
         "y": 1220,
         "wires": [
             [
-                "9cbddfaa64847ffe",
-                "0edf18a4bee8f925"
+                "9cbddfaa64847ffe"
             ]
         ]
     },
@@ -3954,7 +3951,49 @@
         ]
     },
     {
-        "id": "1d217e05e4f31827",
+        "id": "68ee17bb03c5af45",
+        "type": "influxdb in",
+        "z": "c1216b540b10bca8",
+        "influxdb": "bb1f05320e11b457",
+        "name": "10m",
+        "query": "from(bucket: \"readings\")\n    |> range(start: -60m, stop: -10m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> aggregateWindow(every: 10m, fn: mean, createEmpty: false)\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"10m\")\n    |> to(bucket: \"readings\")",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 470,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b4596afbb055bf56",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "triggered",
+        "payloadType": "str",
+        "x": 220,
+        "y": 1300,
+        "wires": [
+            [
+                "0f61e46cbba51aca"
+            ]
+        ]
+    },
+    {
+        "id": "0f61e46cbba51aca",
         "type": "debug",
         "z": "c1216b540b10bca8",
         "name": "debug 7",
@@ -3965,25 +4004,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "0edf18a4bee8f925",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 530,
-        "y": 1080,
+        "x": 310,
+        "y": 1360,
         "wires": []
     },
     {
