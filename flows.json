@@ -3920,7 +3920,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "Send command",
-        "func": "\n// Set up timeout\nsetTimeout(() => {\n    node.send(msg);\n}, 1000)\n",
+        "func": "\n// Set up timeout\nfunction loop() {\n    setTimeout(loop, 1000)\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3931,8 +3931,7 @@
         "y": 1640,
         "wires": [
             [
-                "b451ad1abc4462cd",
-                "7769356537f1a1c8"
+                "b451ad1abc4462cd"
             ]
         ]
     },
@@ -3976,31 +3975,6 @@
         "x": 830,
         "y": 1640,
         "wires": []
-    },
-    {
-        "id": "7769356537f1a1c8",
-        "type": "switch",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "property": "reset",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "neq",
-                "v": "reset",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 590,
-        "y": 1720,
-        "wires": [
-            [
-                "c58492fe8e2ee546"
-            ]
-        ]
     },
     {
         "id": "9558dcefe4263f75",
