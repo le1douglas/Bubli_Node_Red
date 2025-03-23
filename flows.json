@@ -3920,7 +3920,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "Send command",
-        "func": "\n// Set up timeout\nfunction loop() {\n    setTimeout(loop, 1000)\n}\n",
+        "func": "\n// Set up timeout\nfunction loop() {\n    node.send(msg);\n    setTimeout(loop, 1000)\n    \n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3952,8 +3952,8 @@
         "topic": "",
         "payload": "test",
         "payloadType": "str",
-        "x": 290,
-        "y": 1580,
+        "x": 310,
+        "y": 1640,
         "wires": [
             [
                 "c58492fe8e2ee546"
@@ -3975,31 +3975,6 @@
         "x": 830,
         "y": 1640,
         "wires": []
-    },
-    {
-        "id": "9558dcefe4263f75",
-        "type": "inject",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "props": [
-            {
-                "p": "reset",
-                "v": "reset",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 250,
-        "y": 1640,
-        "wires": [
-            [
-                "c58492fe8e2ee546"
-            ]
-        ]
     },
     {
         "id": "b6e576c423d17e0e",
