@@ -3986,18 +3986,22 @@
         "propertyType": "msg",
         "rules": [
             {
+                "t": "false"
+            },
+            {
                 "t": "true"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 710,
         "y": 1700,
         "wires": [
             [
                 "c58492fe8e2ee546"
-            ]
+            ],
+            []
         ]
     },
     {
