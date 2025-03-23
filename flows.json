@@ -3916,6 +3916,70 @@
         ]
     },
     {
+        "id": "c4aefcc45db7b5e9",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "function 4",
+        "func": "downsample_data_older_than = -1h\nevery = 1m\n\nbucket_name = \"readings\"\nmeasurement_input = \"raw\"\nmeasurement_output = \"downsampled\"\ndescription_filter = \"temp\"\n\n// Base query: Read and preprocess data\nbase = from(bucket: bucket_name)\n    |> range(start: 1970 - 01 - 01T00: 00: 00Z, stop: downsample_data_older_than)\n    |> filter(fn: (r) => r._measurement == measurement_input)\n    |> filter(fn: (r) => r.description == description_filter)\n    |> group(columns: [\"description\"], mode: \"by\")\n    |> set(key: \"_measurement\", value: measurement_output)\n\n// Define aggregations\nmax_data = base |> aggregateWindow(every: every, fn: max, createEmpty: false) |> yield(name: \"max\")\n// |> to(bucket: bucket_name)  // Uncomment to store results\n\nmin_data = base |> aggregateWindow(every: every, fn: min, createEmpty: false) |> yield(name: \"min\")\n// |> to(bucket: bucket_name)\n\nmean_data = base |> aggregateWindow(every: every, fn: mean, createEmpty: false) |> yield(name: \"mean\")\n// |> to(bucket: bucket_name)\n\n\n\n\n\n\n\n\n\n\n\n\nbase =\n    from(bucket: \"readings\")\n    |> range(start: -100m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> filter(fn: (r) => r.description == \"humidity\")\n    |> group(columns: [\"description\"], mode: \"by\")\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"1h\")\n\nmax = base\n    |> aggregateWindow(every: 5m, fn: max, createEmpty: false)\n    |> yield(name: \"max\")\n//|> to(bucket: \"readings\")\n\n\nmin = base\n    |> aggregateWindow(every: 5m, fn: min, createEmpty: false)\n    |> yield(name: \"min\")\n//|> to(bucket: \"readings\")\n\nmean = base\n    |> aggregateWindow(every: 5m, fn: mean, createEmpty: false)\n    |> yield(name: \"mean\")\n        //|> to(bucket: \"readings\")\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 213,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "369ee6a758900164",
+        "type": "influxdb in",
+        "z": "c1216b540b10bca8",
+        "influxdb": "bb1f05320e11b457",
+        "name": "",
+        "query": "downsample_data_older_than = 10m\none_datapoint_every = 5m\n\noption task = {name: \"downsample_task_2\", every: one_datapoint_every, offset: 1m}\n\nbucket = \"readings\"\n\nbase =\n    from(bucket: bucket)\n        |> range(start: -inf, stop: -downsample_data_older_than)\n        |> filter(fn: (r) => r._measurement == \"raw\")\n        |> group(columns: [\"description\"], mode: \"by\")\n        |> set(key: \"_measurement\", value: \"downsampled\")\n\nmax =\n    base\n        |> aggregateWindow(every: one_datapoint_every, fn: max, createEmpty: false)\n        |> set(key: \"aggregation\", value: \"max\")\n        //|> yield(name: \"max\")\n        |> to(bucket: bucket)\n\nmin =\n    base\n        |> aggregateWindow(every: one_datapoint_every, fn: min, createEmpty: false)\n        |> set(key: \"aggregation\", value: \"min\")\n        //|> yield(name: \"min\")\n        |> to(bucket: bucket)\n\nmean =\n    base\n        |> aggregateWindow(every: one_datapoint_every, fn: mean, createEmpty: false)\n        |> set(key: \"aggregation\", value: \"mean\")\n        // yield(name: \"mean\")\n        |> to(bucket: bucket)\n",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "${organization}",
+        "x": 580,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34fe5973954d5454",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 410,
+        "y": 1560,
+        "wires": [
+            [
+                "369ee6a758900164"
+            ]
+        ]
+    },
+    {
         "id": "b6e576c423d17e0e",
         "type": "ui-table",
         "z": "ee81bdc633abbb7c",
