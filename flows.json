@@ -4007,7 +4007,7 @@
         "y": 1640,
         "wires": [
             [
-                "22d68afeb56baa16"
+                "e98c3575fa12268c"
             ]
         ]
     },
@@ -4047,6 +4047,29 @@
         "x": 510,
         "y": 1740,
         "wires": []
+    },
+    {
+        "id": "e98c3575fa12268c",
+        "type": "change",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "killSwitch",
+                "pt": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 1780,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
