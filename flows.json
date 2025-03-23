@@ -895,21 +895,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "bb936b46f1b1c04e",
-        "type": "influxdb",
-        "hostname": "http://bubli.local/",
-        "port": "8086",
-        "protocol": "http",
-        "database": "readings",
-        "name": "readings_database",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "10",
-        "rejectUnauthorized": true
-    },
-    {
         "id": "d50d0c9f.31e858",
         "type": "tls-config",
         "name": "",
@@ -921,36 +906,6 @@
         "caname": "",
         "servername": "",
         "verifyservercert": false
-    },
-    {
-        "id": "9afa5e211bc7798f",
-        "type": "influxdb",
-        "hostname": "192.168.178.219",
-        "port": "8086",
-        "protocol": "http",
-        "database": "test_database",
-        "name": "test_database",
-        "usetls": false,
-        "tls": "d50d0c9f.31e858",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "",
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "f5c51a0a756cf0d2",
-        "type": "influxdb",
-        "hostname": "192.168.178.219",
-        "port": "8086",
-        "protocol": "http",
-        "database": "devices",
-        "name": "devices_database",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "10",
-        "rejectUnauthorized": true
     },
     {
         "id": "0181503f75b7a1e0",
@@ -1050,21 +1005,6 @@
         "visible": "true",
         "disabled": "false",
         "groupType": "default"
-    },
-    {
-        "id": "516cdd17dbe3fcc7",
-        "type": "influxdb",
-        "hostname": "192.168.178.219",
-        "port": "8086",
-        "protocol": "http",
-        "database": "commands",
-        "name": "commands_database",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "10",
-        "rejectUnauthorized": true
     },
     {
         "id": "ef54a0bf43ed426c",
@@ -1234,36 +1174,6 @@
             "widgetGap": "6px",
             "density": "default"
         }
-    },
-    {
-        "id": "0fac13ee3d37b9d9",
-        "type": "influxdb",
-        "hostname": "192.168.178.219",
-        "port": "8086",
-        "protocol": "http",
-        "database": "readings_raw",
-        "name": "readings_raw",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "10",
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "3876ed563b3b97f7",
-        "type": "influxdb",
-        "hostname": "192.168.178.219",
-        "port": "8086",
-        "protocol": "http",
-        "database": "readings_downsampled",
-        "name": "readings_downsampled",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://bubli.local:8086",
-        "timeout": "10",
-        "rejectUnauthorized": true
     },
     {
         "id": "125065e5fc820fe0",
@@ -1769,25 +1679,6 @@
         "wires": []
     },
     {
-        "id": "4b718ad620e43044",
-        "type": "influxdb in",
-        "z": "36160a387bc59014",
-        "influxdb": "bb936b46f1b1c04e",
-        "name": "",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "organisation",
-        "x": 1190,
-        "y": 180,
-        "wires": [
-            [
-                "2e9846fceb6b17a5"
-            ]
-        ]
-    },
-    {
         "id": "cce6def5480b0ae6",
         "type": "function",
         "z": "36160a387bc59014",
@@ -1822,9 +1713,7 @@
         "x": 990,
         "y": 180,
         "wires": [
-            [
-                "4b718ad620e43044"
-            ]
+            []
         ]
     },
     {
@@ -3961,7 +3850,7 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "organisation",
-        "x": 470,
+        "x": 570,
         "y": 1300,
         "wires": [
             []
@@ -4004,8 +3893,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 310,
-        "y": 1360,
+        "x": 360,
+        "y": 1300,
         "wires": []
     },
     {
