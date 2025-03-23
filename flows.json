@@ -32,92 +32,6 @@
         "env": []
     },
     {
-        "id": "942db10cf181bf86",
-        "type": "subflow",
-        "name": "On MQTT recieved",
-        "info": "expects a `msg.topic` with the mqtt topic to subscribe.\nyou can use wildcards like `/devices/#` to subscribe to any subtopic of `devices`",
-        "category": "",
-        "in": [],
-        "out": [
-            {
-                "x": 1810,
-                "y": 100,
-                "wires": [
-                    {
-                        "id": "fa014379b36a68b0",
-                        "port": "2"
-                    },
-                    {
-                        "id": "fa014379b36a68b0",
-                        "port": "0"
-                    }
-                ]
-            },
-            {
-                "x": 1800,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "fa014379b36a68b0",
-                        "port": "1"
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#FFAAAA",
-        "outputLabels": [
-            "response arrived",
-            "command sent",
-            "new device registered"
-        ]
-    },
-    {
-        "id": "ea1871b374ee42fe",
-        "type": "subflow",
-        "name": "Reset Database",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 100,
-                "wires": [
-                    {
-                        "id": "2ed286b853a7b392"
-                    },
-                    {
-                        "id": "f91be4876462c7e1"
-                    }
-                ]
-            }
-        ],
-        "out": [],
-        "env": [
-            {
-                "name": "databaseName",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-database",
-                    "label": {
-                        "en-US": "Database"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {},
-        "color": "#D8BFD8",
-        "icon": "node-red-contrib-influxdb/influxdb.png"
-    },
-    {
         "id": "359c38d245e1747d",
         "type": "subflow",
         "name": "Ping device",
@@ -1571,425 +1485,6 @@
         "useselfsignedcertificate": false,
         "sslterminated": false,
         "verboselogging": false
-    },
-    {
-        "id": "e06fdc2ac10686e5",
-        "type": "comment",
-        "z": "942db10cf181bf86",
-        "name": "When MQTT message is recieved, flow starts here",
-        "info": "",
-        "x": 1310,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "5e79c5e017ee7b54",
-        "type": "influxdb in",
-        "z": "942db10cf181bf86",
-        "influxdb": "f5c51a0a756cf0d2",
-        "name": "get device name list",
-        "query": "SELECT device_name FROM device_info",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "organisation",
-        "x": 360,
-        "y": 120,
-        "wires": [
-            [
-                "d8ea47114fd7c8d0"
-            ]
-        ]
-    },
-    {
-        "id": "622b7203e357e0cd",
-        "type": "comment",
-        "z": "942db10cf181bf86",
-        "name": "subscribe to each device ",
-        "info": "",
-        "x": 490,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "d8ea47114fd7c8d0",
-        "type": "split",
-        "z": "942db10cf181bf86",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 530,
-        "y": 120,
-        "wires": [
-            [
-                "7d0e7d32e62651b5",
-                "2648c9fb6f58b0d4",
-                "47ae84998ebaf1f3"
-            ]
-        ]
-    },
-    {
-        "id": "c969d59d2afeb568",
-        "type": "change",
-        "z": "942db10cf181bf86",
-        "name": "action = subscribe",
-        "rules": [
-            {
-                "t": "set",
-                "p": "action",
-                "pt": "msg",
-                "to": "subscribe",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 990,
-        "y": 120,
-        "wires": [
-            [
-                "c6f8cec13286a0e1"
-            ]
-        ]
-    },
-    {
-        "id": "2648c9fb6f58b0d4",
-        "type": "function",
-        "z": "942db10cf181bf86",
-        "name": "/command/device_name",
-        "func": "msg.topic = \"/command/\" + msg.payload.device_name;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 730,
-        "y": 120,
-        "wires": [
-            [
-                "c969d59d2afeb568"
-            ]
-        ]
-    },
-    {
-        "id": "c6f8cec13286a0e1",
-        "type": "mqtt in",
-        "z": "942db10cf181bf86",
-        "name": "",
-        "topic": "",
-        "qos": "2",
-        "datatype": "json",
-        "broker": "76494be814e2c42d",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 1,
-        "x": 1170,
-        "y": 120,
-        "wires": [
-            [
-                "0fa5bf5f9f7ec9cd"
-            ]
-        ]
-    },
-    {
-        "id": "7d0e7d32e62651b5",
-        "type": "function",
-        "z": "942db10cf181bf86",
-        "name": "/device_name",
-        "func": "msg.topic = \"/\" + msg.payload.device_name;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 80,
-        "wires": [
-            [
-                "c969d59d2afeb568"
-            ]
-        ]
-    },
-    {
-        "id": "fa014379b36a68b0",
-        "type": "switch",
-        "z": "942db10cf181bf86",
-        "name": "",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "cont",
-                "v": "/response/",
-                "vt": "str"
-            },
-            {
-                "t": "cont",
-                "v": "/command/",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 1570,
-        "y": 120,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "0fa5bf5f9f7ec9cd",
-        "type": "change",
-        "z": "942db10cf181bf86",
-        "name": "delete unused fields",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "qos",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "retain",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1340,
-        "y": 120,
-        "wires": [
-            [
-                "fa014379b36a68b0"
-            ]
-        ]
-    },
-    {
-        "id": "dd3f8a46da0541ce",
-        "type": "debug",
-        "z": "942db10cf181bf86",
-        "name": "Subsribing to topic",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "topic",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1210,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "3b09d2eaed448b22",
-        "type": "inject",
-        "z": "942db10cf181bf86",
-        "name": "on start",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 180,
-        "y": 100,
-        "wires": [
-            [
-                "5e79c5e017ee7b54"
-            ]
-        ]
-    },
-    {
-        "id": "47ae84998ebaf1f3",
-        "type": "function",
-        "z": "942db10cf181bf86",
-        "name": "/response/device_name",
-        "func": "msg.topic = \"/response/\" + msg.payload.device_name;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 750,
-        "y": 160,
-        "wires": [
-            [
-                "c969d59d2afeb568"
-            ]
-        ]
-    },
-    {
-        "id": "8298dc37244f7850",
-        "type": "status",
-        "z": "942db10cf181bf86",
-        "name": "on new device registered",
-        "scope": [],
-        "x": 130,
-        "y": 140,
-        "wires": [
-            [
-                "5e79c5e017ee7b54"
-            ]
-        ]
-    },
-    {
-        "id": "2ed286b853a7b392",
-        "type": "function",
-        "z": "ea1871b374ee42fe",
-        "name": "drop database query",
-        "func": "msg.query = \"DROP DATABASE \" + env.get(\"databaseName\")\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 260,
-        "y": 80,
-        "wires": [
-            [
-                "20a778e8365827a1",
-                "ebe52ea1d47fe826"
-            ]
-        ]
-    },
-    {
-        "id": "7eed0ec0b19572fb",
-        "type": "function",
-        "z": "ea1871b374ee42fe",
-        "name": "create database query",
-        "func": "msg.query = \"CREATE DATABASE \" + env.get(\"databaseName\")\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 120,
-        "wires": [
-            [
-                "20a778e8365827a1",
-                "ebe52ea1d47fe826"
-            ]
-        ]
-    },
-    {
-        "id": "f91be4876462c7e1",
-        "type": "delay",
-        "z": "ea1871b374ee42fe",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "500",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 230,
-        "y": 120,
-        "wires": [
-            [
-                "7eed0ec0b19572fb"
-            ]
-        ]
-    },
-    {
-        "id": "20a778e8365827a1",
-        "type": "debug",
-        "z": "ea1871b374ee42fe",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "query",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 730,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "ebe52ea1d47fe826",
-        "type": "influxdb in",
-        "z": "ea1871b374ee42fe",
-        "influxdb": "9afa5e211bc7798f",
-        "name": "send query",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "organisation",
-        "x": 730,
-        "y": 120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0c2d01d3dc04b4b5",
-        "type": "function",
-        "z": "ea1871b374ee42fe",
-        "name": "function 1",
-        "func": "msg.payload = env.get(\"databaseName\")\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 230,
-        "y": 360,
-        "wires": [
-            [
-                "bfcf0ad3b067c821"
-            ]
-        ]
-    },
-    {
-        "id": "bfcf0ad3b067c821",
-        "type": "debug",
-        "z": "ea1871b374ee42fe",
-        "name": "debug 61",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 340,
-        "wires": []
     },
     {
         "id": "93f6cb1d2294f113",
@@ -4385,6 +3880,75 @@
         "x": 660,
         "y": 900,
         "wires": []
+    },
+    {
+        "id": "9cbddfaa64847ffe",
+        "type": "exec",
+        "z": "c1216b540b10bca8",
+        "command": "",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 550,
+        "y": 1220,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6dc2084f378553f9",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "function 1",
+        "func": "// Get the current time\nlet now = new Date();\n\n// Subtract 10 minutes (600,000 milliseconds)\nnow.setMinutes(now.getMinutes() - 10);\n\n// Get the result in ISO 8601 format (UTC)\nlet tenMinutesAgo = now.toISOString();\n\nmsg.payload = `influx delete\n--bucket readings\n--start '1970-01-01T00:00:00Z'\n--stop '${tenMinutesAgo}'\n--predicate '_measurement=\"downsampled\" AND downsampling=\"1m\"'` \n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1220,
+        "wires": [
+            [
+                "9cbddfaa64847ffe"
+            ]
+        ]
+    },
+    {
+        "id": "e74422c34c1bc493",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1220,
+        "wires": [
+            [
+                "6dc2084f378553f9"
+            ]
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
