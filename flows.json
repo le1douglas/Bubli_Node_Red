@@ -3999,43 +3999,33 @@
         "type": "inject",
         "z": "c1216b540b10bca8",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
+        "props": [],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
+        "x": 190,
         "y": 1640,
         "wires": [
             [
-                "431f70a7126e0a7d"
+                "22d68afeb56baa16"
             ]
         ]
     },
     {
-        "id": "431f70a7126e0a7d",
-        "type": "function",
+        "id": "22d68afeb56baa16",
+        "type": "rbe",
         "z": "c1216b540b10bca8",
-        "name": "rearm killSwitch",
-        "func": "\nglobal.set(\"killSwitch\", undefined);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": false,
+        "property": "payload",
+        "topi": "topic",
+        "x": 410,
         "y": 1640,
         "wires": [
             [
