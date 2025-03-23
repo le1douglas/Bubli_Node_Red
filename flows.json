@@ -3920,7 +3920,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "Send command",
-        "func": "\n// Set up timeout\nfunction loop() {\n    node.send(msg);\n    setTimeout(loop, 1000)\n    \n}\n",
+        "func": "\n// Set up timeout\n\n\nfunction loop() {\n    node.send(msg);\n    setTimeout(loop, 1000)\n}\n\nloop();\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
