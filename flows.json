@@ -3865,7 +3865,7 @@
         "z": "c1216b540b10bca8",
         "name": "",
         "props": [],
-        "repeat": "60",
+        "repeat": "1",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
