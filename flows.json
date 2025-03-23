@@ -3853,36 +3853,32 @@
         "x": 570,
         "y": 1300,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b4596afbb055bf56",
-        "type": "inject",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "triggered",
-        "payloadType": "str",
-        "x": 220,
-        "y": 1300,
-        "wires": [
             [
-                "0f61e46cbba51aca"
+                "f42afe406b75fc63"
             ]
         ]
     },
     {
-        "id": "0f61e46cbba51aca",
+        "id": "c74604d429b25227",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 260,
+        "y": 1300,
+        "wires": [
+            [
+                "68ee17bb03c5af45"
+            ]
+        ]
+    },
+    {
+        "id": "f42afe406b75fc63",
         "type": "debug",
         "z": "c1216b540b10bca8",
         "name": "debug 7",
@@ -3890,10 +3886,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
+        "x": 730,
         "y": 1300,
         "wires": []
     },
