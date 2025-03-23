@@ -1,0 +1,16 @@
+{
+    "name": "Bubli",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "dependencies": {
+        "node-red-contrib-influxdb": "0.7.0",
+        "@flowfuse/node-red-dashboard": "1.22.1",
+        "node-red-contrib-telegrambot": "16.3.0"
+    },
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
