@@ -3986,7 +3986,7 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
+                "t": "neq",
                 "v": "reset",
                 "vt": "str"
             }
@@ -3994,8 +3994,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 670,
-        "y": 1700,
+        "x": 590,
+        "y": 1720,
         "wires": [
             [
                 "c58492fe8e2ee546"
