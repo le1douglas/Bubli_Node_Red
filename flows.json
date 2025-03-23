@@ -850,18 +850,6 @@
         ]
     },
     {
-        "id": "002a1b32ac0f5905",
-        "type": "junction",
-        "z": "c1216b540b10bca8",
-        "x": 560,
-        "y": 1720,
-        "wires": [
-            [
-                "c58492fe8e2ee546"
-            ]
-        ]
-    },
-    {
         "id": "bb1f05320e11b457",
         "type": "influxdb",
         "hostname": "127.0.0.1",
@@ -3944,12 +3932,76 @@
         "wires": [
             [
                 "b451ad1abc4462cd",
-                "002a1b32ac0f5905"
+                "7769356537f1a1c8"
             ]
         ]
     },
     {
         "id": "aae925a519dd5425",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "reset",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 570,
+        "y": 1700,
+        "wires": [
+            [
+                "7769356537f1a1c8"
+            ]
+        ]
+    },
+    {
+        "id": "b451ad1abc4462cd",
+        "type": "debug",
+        "z": "c1216b540b10bca8",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "7769356537f1a1c8",
+        "type": "switch",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "property": "reset",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 1700,
+        "wires": [
+            [
+                "c58492fe8e2ee546"
+            ]
+        ]
+    },
+    {
+        "id": "9558dcefe4263f75",
         "type": "inject",
         "z": "c1216b540b10bca8",
         "name": "",
@@ -3969,29 +4021,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 350,
+        "x": 320,
         "y": 1640,
         "wires": [
             [
                 "c58492fe8e2ee546"
             ]
         ]
-    },
-    {
-        "id": "b451ad1abc4462cd",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 830,
-        "y": 1640,
-        "wires": []
     },
     {
         "id": "b6e576c423d17e0e",
