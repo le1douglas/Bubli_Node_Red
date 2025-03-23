@@ -3952,8 +3952,8 @@
         "topic": "",
         "payload": "test",
         "payloadType": "str",
-        "x": 270,
-        "y": 1560,
+        "x": 390,
+        "y": 1600,
         "wires": [
             [
                 "88c17ff0f7d98615"
@@ -3988,8 +3988,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1560,
+        "x": 540,
+        "y": 1600,
         "wires": [
             []
         ]
@@ -4021,6 +4021,49 @@
             [
                 "c58492fe8e2ee546"
             ]
+        ]
+    },
+    {
+        "id": "7feb2fe888a9ca89",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 370,
+        "y": 1560,
+        "wires": [
+            [
+                "3dd105b1276af726"
+            ]
+        ]
+    },
+    {
+        "id": "3dd105b1276af726",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "killSwitch",
+        "func": "global.set(\"killSwitch\", false);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 1560,
+        "wires": [
+            []
         ]
     },
     {
