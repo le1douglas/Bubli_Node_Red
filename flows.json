@@ -3841,25 +3841,6 @@
         ]
     },
     {
-        "id": "68ee17bb03c5af45",
-        "type": "influxdb in",
-        "z": "c1216b540b10bca8",
-        "influxdb": "bb1f05320e11b457",
-        "name": "1m",
-        "query": "from(bucket: \"readings\")\n    |> range(start: -1m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> aggregateWindow(every: 1m, fn: last, createEmpty: false)\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"1m\")\n    |> to(bucket: \"readings\")\n",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "${organization}",
-        "x": 470,
-        "y": 1300,
-        "wires": [
-            [
-                "f42afe406b75fc63"
-            ]
-        ]
-    },
-    {
         "id": "c74604d429b25227",
         "type": "inject",
         "z": "c1216b540b10bca8",
@@ -3874,7 +3855,7 @@
         "y": 1300,
         "wires": [
             [
-                "68ee17bb03c5af45"
+                "f069259ff93a9f1e"
             ]
         ]
     },
@@ -3891,9 +3872,48 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
+        "x": 740,
         "y": 1300,
         "wires": []
+    },
+    {
+        "id": "f069259ff93a9f1e",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "function 3",
+        "func": "let every = \"1m\"; // For example, 10 minutes ago\nlet measurement_input = \"raw\"; // Measurement name\nlet measurement_output = \"downsampled\"; // New measurement name\nlet downsampling_interval = \"1m\"; // Downsampling interval\nlet bucket_name = \"readings\"; \n\nmsg.query = `\noption task = {name: \"downsample_1min_last\", every: ${every}, offset: 1m}\n\nfrom(bucket: \"${bucket_name}\")\n    |> range(start: -${every})\n    |> filter(fn: (r) => r._measurement == \"${measurement_output}\")\n    |> aggregateWindow(every: ${downsampling_interval}, fn: last, createEmpty: false)\n    |> set(key: \"_measurement\", value: \"${measurement_input}\")\n    |> set(key: \"downsampling\", value: \"${downsampling_interval}\")\n    |> to(bucket: \"${bucket_name}\")`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1300,
+        "wires": [
+            [
+                "68ee17bb03c5af45"
+            ]
+        ]
+    },
+    {
+        "id": "68ee17bb03c5af45",
+        "type": "influxdb in",
+        "z": "c1216b540b10bca8",
+        "influxdb": "bb1f05320e11b457",
+        "name": "1m",
+        "query": "from(bucket: \"readings\")\n    |> range(start: -1m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> aggregateWindow(every: 1m, fn: last, createEmpty: false)\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"1m\")\n    |> to(bucket: \"readings\")\n",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "${organization}",
+        "x": 550,
+        "y": 1300,
+        "wires": [
+            [
+                "f42afe406b75fc63"
+            ]
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
