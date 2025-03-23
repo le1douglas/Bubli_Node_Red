@@ -3846,12 +3846,12 @@
         "z": "c1216b540b10bca8",
         "influxdb": "bb1f05320e11b457",
         "name": "1m",
-        "query": "from(bucket: \"readings\")\n    |> range(start: -1m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> aggregateWindow(every: 1m, fn: last, createEmpty: false)\n    |> map(fn: (r) => ({ r with _time: truncate(t: r._time, unit: 1m) }))  // Round time to the nearest minute\n    |> distinct(column: \"_time\")  // Ensures only one point per minute\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"1m\")\n    |> to(bucket: \"readings\")\n",
+        "query": "from(bucket: \"readings\")\n    |> range(start: -1m)\n    |> filter(fn: (r) => r._measurement == \"raw\")\n    |> aggregateWindow(every: 1m, fn: last, createEmpty: false)\n    |> set(key: \"_measurement\", value: \"downsampled\")\n    |> set(key: \"downsampling\", value: \"1m\")\n    |> to(bucket: \"readings\")\n",
         "rawOutput": false,
         "precision": "",
         "retentionPolicy": "",
         "org": "${organization}",
-        "x": 390,
+        "x": 470,
         "y": 1300,
         "wires": [
             [
@@ -3891,7 +3891,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
+        "x": 660,
         "y": 1300,
         "wires": []
     },
