@@ -3851,7 +3851,7 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "${organization}",
-        "x": 570,
+        "x": 390,
         "y": 1300,
         "wires": [
             [
@@ -3891,7 +3891,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
+        "x": 520,
         "y": 1300,
         "wires": []
     },
