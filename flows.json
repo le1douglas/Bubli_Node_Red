@@ -3920,7 +3920,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "Send command",
-        "func": "\n// Set up timeout\nsetTimeout(() => {\n    msg.payload = \"timeout\" \n    node.send(msg);\n}, 2000)\n",
+        "func": "\n// Set up timeout\nsetTimeout(() => {\n    node.send(msg);\n}, 2000)\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3943,9 +3943,7 @@
         "name": "",
         "props": [
             {
-                "p": "reset",
-                "v": "",
-                "vt": "str"
+                "p": "payload"
             }
         ],
         "repeat": "",
@@ -3953,11 +3951,13 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 570,
-        "y": 1700,
+        "payload": "test",
+        "payloadType": "str",
+        "x": 290,
+        "y": 1580,
         "wires": [
             [
-                "7769356537f1a1c8"
+                "c58492fe8e2ee546"
             ]
         ]
     },
@@ -3986,21 +3986,17 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "false"
-            },
-            {
-                "t": "true"
+                "t": "eq",
+                "v": "reset",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
-        "x": 710,
+        "outputs": 1,
+        "x": 670,
         "y": 1700,
         "wires": [
-            [
-                "c58492fe8e2ee546"
-            ],
             []
         ]
     },
@@ -4011,10 +4007,8 @@
         "name": "",
         "props": [
             {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
+                "p": "reset",
+                "v": "reset",
                 "vt": "str"
             }
         ],
@@ -4023,9 +4017,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 320,
+        "x": 250,
         "y": 1640,
         "wires": [
             [
