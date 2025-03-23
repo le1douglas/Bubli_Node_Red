@@ -3865,7 +3865,7 @@
         "z": "c1216b540b10bca8",
         "name": "",
         "props": [],
-        "repeat": "1",
+        "repeat": "60",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -3873,7 +3873,9 @@
         "x": 260,
         "y": 1300,
         "wires": [
-            []
+            [
+                "68ee17bb03c5af45"
+            ]
         ]
     },
     {
