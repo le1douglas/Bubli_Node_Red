@@ -3908,7 +3908,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "function 1",
-        "func": "// Get the current time\nlet now = new Date();\n\n// Subtract 10 minutes (600,000 milliseconds)\nnow.setMinutes(now.getMinutes() - 10);\n\n// Get the result in ISO 8601 format (UTC)\nlet tenMinutesAgo = now.toISOString();\n\nmsg.payload = `influx delete\n--bucket readings\n--start '1970-01-01T00:00:00Z'\n--stop '${tenMinutesAgo}'\n--predicate '_measurement=\"downsampled\" AND downsampling=\"1m\"'` \n\nreturn msg;",
+        "func": "// Get the current time\nlet now = new Date();\n\n// Subtract 10 minutes (600,000 milliseconds)\nnow.setMinutes(now.getMinutes() - 10);\n\n// Get the result in ISO 8601 format (UTC)\nlet tenMinutesAgo = now.toISOString();\n\nmsg.payload = `influx delete\n--org ${env.get(\"organization\") }\n--bucket readings\n--start '1970-01-01T00:00:00Z'\n--stop '${tenMinutesAgo}'\n--predicate '_measurement=\"downsampled\" AND downsampling=\"1m\"'` \n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
