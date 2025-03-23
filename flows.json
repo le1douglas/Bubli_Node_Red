@@ -4028,7 +4028,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "rearm killSwitch",
-        "func": "\nglobal.set(\"killSwitch\", \"\");\nreturn msg;",
+        "func": "\nglobal.set(\"killSwitch\", undefined);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
