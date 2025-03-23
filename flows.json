@@ -691,12 +691,13 @@
             "8fbf7e5a85b9c656",
             "4543bd88333bcea0",
             "758066b4c68477e3",
-            "556088067bcb5e5c"
+            "556088067bcb5e5c",
+            "5cd941b378bbb25e"
         ],
         "x": 1594,
-        "y": 779,
+        "y": 759,
         "w": 1212,
-        "h": 142
+        "h": 162
     },
     {
         "id": "2571277fd6cbec46",
@@ -4856,11 +4857,13 @@
         "wires": [
             [
                 "4543bd88333bcea0",
-                "8fbf7e5a85b9c656"
+                "8fbf7e5a85b9c656",
+                "5cd941b378bbb25e"
             ],
             [
                 "4543bd88333bcea0",
-                "8fbf7e5a85b9c656"
+                "8fbf7e5a85b9c656",
+                "5cd941b378bbb25e"
             ],
             []
         ]
@@ -4871,7 +4874,7 @@
         "z": "ee81bdc633abbb7c",
         "g": "d882671d10d4cb66",
         "name": "delete from devices_info",
-        "func": "let bucket = \"devices\";\nlet org = \"bubli\";\nlet measurement = \"devices_info\"\nlet start = \"1970-01-01T00:00:00Z\"; // From the beginning of time\nlet stop = new Date().toISOString();  // To Current timestamp\nlet mac_address = msg.mac_address\n\n// Generate the full query string\nmsg.payload = `influx delete \\\\\n  --bucket ${bucket} \\\\\n  --org ${org} \\\\\n  --start \"${start}\" \\\\\n  --stop \"${stop}\" \\\\\n  --predicate '_measurement=\"${measurement}\" AND mac_address = \"${mac_address}\" '`;\n\n//  --predicate '_measurement=\"${measurement}\" AND device_name = \"${device_name}\"'`;\n\n\nreturn msg",
+        "func": "let bucket = \"devices\";\nlet org = \"bubli\";\nlet measurement = \"devices_info\"\nlet start = \"1970-01-01T00:00:00Z\"; // From the beginning of time\nlet stop = new Date().toISOString();  // To Current timestamp\nlet mac_address = msg.mac_address\n\n// Generate the full query string\nmsg.payload = `influx delete \\\\\n  --bucket ${bucket} \\\\\n  --org ${org} \\\\\n  --start \"${start}\" \\\\\n  --stop \"${stop}\" \\\\\n  --predicate '_measurement=\"${measurement}\" AND mac_address = \"${mac_address}\" '`;\n\n\n\nreturn msg",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4882,7 +4885,8 @@
         "y": 820,
         "wires": [
             [
-                "a52667df0de6d124"
+                "a52667df0de6d124",
+                "5cd941b378bbb25e"
             ]
         ]
     },
@@ -5484,6 +5488,24 @@
             [],
             []
         ]
+    },
+    {
+        "id": "5cd941b378bbb25e",
+        "type": "debug",
+        "z": "ee81bdc633abbb7c",
+        "g": "d882671d10d4cb66",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2540,
+        "y": 800,
+        "wires": []
     },
     {
         "id": "55f5da9779ded376",
