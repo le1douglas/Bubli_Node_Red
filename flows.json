@@ -3920,7 +3920,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "Send command",
-        "func": "\n// Set up timeout\n\n\nfunction loop() {\n    node.send(msg);\n    setTimeout(loop, 1000)\n}\n\nloop();\n",
+        "func": "var killSwitch = context.get(\"killSwitch\") || false;\n\nfunction loopFunction() {\n    // Check if the loop should stop\n    if (context.get(\"killSwitch\")) {\n        node.warn(\"Loop stopped by kill switch\");\n        return; // Exit function to stop loop\n    }\n\n    // Your main code here\n    node.send({ payload: \"Repeating Task\" });\n\n    // Schedule the next iteration\n    setTimeout(loopFunction, 1000);\n}\n\n// Start loop only if not already running\nif (!killSwitch) {\n    context.set(\"killSwitch\", false); // Reset kill switch\n    loopFunction();\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3952,11 +3952,11 @@
         "topic": "",
         "payload": "test",
         "payloadType": "str",
-        "x": 310,
-        "y": 1640,
+        "x": 270,
+        "y": 1560,
         "wires": [
             [
-                "c58492fe8e2ee546"
+                "88c17ff0f7d98615"
             ]
         ]
     },
@@ -3975,6 +3975,53 @@
         "x": 830,
         "y": 1640,
         "wires": []
+    },
+    {
+        "id": "88c17ff0f7d98615",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "killSwitch",
+        "func": "context.set(\"killSwitch\", true);\nnode.warn(\"Kill switch activated, stopping loop.\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20a57959cfc18133",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 1640,
+        "wires": [
+            [
+                "c58492fe8e2ee546"
+            ]
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
