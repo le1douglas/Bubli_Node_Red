@@ -3927,7 +3927,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
+        "x": 620,
         "y": 1640,
         "wires": [
             [
@@ -3952,7 +3952,7 @@
         "topic": "",
         "payload": "test",
         "payloadType": "str",
-        "x": 390,
+        "x": 450,
         "y": 1600,
         "wires": [
             [
@@ -3988,7 +3988,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
+        "x": 580,
         "y": 1600,
         "wires": [
             []
@@ -4015,55 +4015,32 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 380,
+        "x": 260,
         "y": 1640,
         "wires": [
             [
-                "c58492fe8e2ee546"
+                "431f70a7126e0a7d"
             ]
         ]
     },
     {
-        "id": "7feb2fe888a9ca89",
-        "type": "inject",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "test",
-        "payloadType": "str",
-        "x": 370,
-        "y": 1560,
-        "wires": [
-            [
-                "3dd105b1276af726"
-            ]
-        ]
-    },
-    {
-        "id": "3dd105b1276af726",
+        "id": "431f70a7126e0a7d",
         "type": "function",
         "z": "c1216b540b10bca8",
-        "name": "killSwitch",
-        "func": "global.set(\"killSwitch\", false);\nreturn msg;",
+        "name": "rearm killSwitch",
+        "func": "\nglobal.set(\"killSwitch\", false);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 1560,
+        "x": 420,
+        "y": 1640,
         "wires": [
-            []
+            [
+                "c58492fe8e2ee546"
+            ]
         ]
     },
     {
