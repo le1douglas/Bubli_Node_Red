@@ -3918,7 +3918,7 @@
         "type": "exec",
         "z": "c1216b540b10bca8",
         "command": "",
-        "addpay": "payload",
+        "addpay": "query",
         "append": "",
         "useSpawn": "false",
         "timer": "",
@@ -3926,7 +3926,7 @@
         "oldrc": false,
         "name": "",
         "x": 550,
-        "y": 1380,
+        "y": 1500,
         "wires": [
             [],
             [],
@@ -3937,8 +3937,8 @@
         "id": "88a42f39adfc9c66",
         "type": "function",
         "z": "c1216b540b10bca8",
-        "name": "function 4",
-        "func": "msg.payload = `influx delete --bucket \"readings\" --start 1970-01-01T00:00:00Z --stop \"${new Date().toISOString()}\" --predicate '_measurement=\"downsampled\"'`\nreturn msg;",
+        "name": "build query",
+        "func": "\nmsg.query = `influx delete --bucket \"${msg.bucket}\" --start 1970-01-01T00:00:00Z --stop \"${new Date().toISOString()}\" --predicate '_measurement=\"${msg.measurement}\"'`\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3946,7 +3946,7 @@
         "finalize": "",
         "libs": [],
         "x": 410,
-        "y": 1380,
+        "y": 1500,
         "wires": [
             [
                 "b361bb8515778be2"
@@ -3957,13 +3957,16 @@
         "id": "66f7902cd7c1589b",
         "type": "inject",
         "z": "c1216b540b10bca8",
-        "name": "",
+        "name": "delete measurement",
         "props": [
             {
-                "p": "payload"
+                "p": "bucket",
+                "v": "",
+                "vt": "str"
             },
             {
-                "p": "topic",
+                "p": "measurement",
+                "v": "",
                 "vt": "str"
             }
         ],
@@ -3972,10 +3975,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 280,
-        "y": 1380,
+        "x": 230,
+        "y": 1500,
         "wires": [
             [
                 "88a42f39adfc9c66"
