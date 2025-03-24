@@ -3914,6 +3914,75 @@
         ]
     },
     {
+        "id": "b361bb8515778be2",
+        "type": "exec",
+        "z": "c1216b540b10bca8",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 550,
+        "y": 1380,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "88a42f39adfc9c66",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "function 4",
+        "func": "msg.payload = `influx delete --bucket \"readings\" --start 1970-01-01T00:00:00Z --stop \"${new Date().toISOString()}\" --predicate '_measurement=\"downsampled\"'`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1380,
+        "wires": [
+            [
+                "b361bb8515778be2"
+            ]
+        ]
+    },
+    {
+        "id": "66f7902cd7c1589b",
+        "type": "inject",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 1380,
+        "wires": [
+            [
+                "88a42f39adfc9c66"
+            ]
+        ]
+    },
+    {
         "id": "b6e576c423d17e0e",
         "type": "ui-table",
         "z": "ee81bdc633abbb7c",
