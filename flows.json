@@ -3961,12 +3961,12 @@
         "props": [
             {
                 "p": "bucket",
-                "v": "",
+                "v": "readings",
                 "vt": "str"
             },
             {
                 "p": "measurement",
-                "v": "",
+                "v": "downsampled",
                 "vt": "str"
             }
         ],
