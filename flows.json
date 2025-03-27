@@ -3451,7 +3451,7 @@
         "precisionV18FluxV20": "ms",
         "retentionPolicyV18Flux": "",
         "org": "${organization}",
-        "bucket": "readings",
+        "bucket": "readings_raw",
         "x": 1130,
         "y": 380,
         "wires": []
