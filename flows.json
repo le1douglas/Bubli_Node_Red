@@ -561,6 +561,23 @@
                         ]
                     }
                 }
+            },
+            {
+                "name": "save_in_database",
+                "type": "bool",
+                "value": "true",
+                "ui": {
+                    "icon": "font-awesome/fa-database",
+                    "label": {
+                        "en-US": "Save in database"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "bool"
+                        ]
+                    }
+                }
             }
         ],
         "meta": {},
@@ -2725,7 +2742,8 @@
         "links": [
             "cb586dc3ddf24454",
             "1a876869afe727f2",
-            "20d7ebb62d98410e"
+            "20d7ebb62d98410e",
+            "9ea25b170c15bb22"
         ],
         "x": 935,
         "y": 260,
@@ -3108,6 +3126,136 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "15950b8c1a0417cf",
+        "type": "switch",
+        "z": "6b5ddb850b89560b",
+        "name": "if save_in_database",
+        "property": "save_in_database",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1230,
+        "y": 760,
+        "wires": [
+            [
+                "00169a0ca16de1d9"
+            ]
+        ]
+    },
+    {
+        "id": "9ea25b170c15bb22",
+        "type": "link in",
+        "z": "6b5ddb850b89560b",
+        "name": "response success in",
+        "links": [
+            "19adc42a84d31261"
+        ],
+        "x": 1075,
+        "y": 760,
+        "wires": [
+            [
+                "15950b8c1a0417cf"
+            ]
+        ]
+    },
+    {
+        "id": "2b91d3c0cebe2079",
+        "type": "function",
+        "z": "6b5ddb850b89560b",
+        "name": "format for influx db",
+        "func": "let device_name = msg.payload.device_name\nlet sensor_name = msg.payload.response_body.sensor_name\n\nlet value = msg.payload.response_body.readings.value\nlet unit = msg.payload.response_body.readings.unit\nlet description = msg.payload.response_body.readings.type\n\nmsg.payload=  [\n        {\n            \"value\": parseFloat(value)\n        },\n        {\n            \"device_name\": device_name,\n            \"sensor_name\": sensor_name,\n            \"description\": description,\n            \"unit\": unit\n        }\n    ]\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1750,
+        "y": 760,
+        "wires": [
+            [
+                "eaad593edfb7e9d9"
+            ]
+        ]
+    },
+    {
+        "id": "68a8cf264b2ffcec",
+        "type": "split",
+        "z": "6b5ddb850b89560b",
+        "name": "split each reading",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload.response_body.readings",
+        "x": 1550,
+        "y": 760,
+        "wires": [
+            [
+                "2b91d3c0cebe2079",
+                "5361375f765721e0"
+            ]
+        ]
+    },
+    {
+        "id": "eaad593edfb7e9d9",
+        "type": "influxdb out",
+        "z": "6b5ddb850b89560b",
+        "influxdb": "bb1f05320e11b457",
+        "name": "",
+        "measurement": "raw",
+        "precision": "ms",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "${organization}",
+        "bucket": "readings_raw",
+        "x": 1950,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "00169a0ca16de1d9",
+        "type": "json",
+        "z": "6b5ddb850b89560b",
+        "name": "",
+        "property": "payload.response_body",
+        "action": "obj",
+        "pretty": false,
+        "x": 1390,
+        "y": 760,
+        "wires": [
+            [
+                "68a8cf264b2ffcec"
+            ]
+        ]
+    },
+    {
+        "id": "5361375f765721e0",
+        "type": "debug",
+        "z": "6b5ddb850b89560b",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1720,
+        "y": 800,
+        "wires": []
     },
     {
         "id": "e0b8603bc2e349ac",
