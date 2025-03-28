@@ -3969,7 +3969,7 @@
         "env": [
             {
                 "name": "threshold",
-                "value": "60",
+                "value": "55",
                 "type": "num"
             },
             {
