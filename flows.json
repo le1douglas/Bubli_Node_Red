@@ -3913,11 +3913,6 @@
                 "name": "sensor_name",
                 "value": "TempAndRh_Sensor",
                 "type": "str"
-            },
-            {
-                "name": "send_error_notification",
-                "value": "false",
-                "type": "bool"
             }
         ],
         "x": 410,
