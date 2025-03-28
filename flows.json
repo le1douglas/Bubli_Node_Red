@@ -3797,7 +3797,7 @@
         "type": "function",
         "z": "c1216b540b10bca8",
         "name": "build query",
-        "func": "\nmsg.query = `influx delete --bucket \"${msg.bucket}\" --start 1970-01-01T00:00:00Z --stop \"${new Date().toISOString()}\" --predicate '_measurement=\"${msg.measurement}\" and  aggregation=\"min\"'`\nreturn msg;",
+        "func": "\nmsg.query = `influx delete --bucket \"${msg.bucket}\" --start 1970-01-01T00:00:00Z --stop \"${new Date().toISOString()}\" --predicate '_measurement=\"${msg.measurement}\"'`\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
