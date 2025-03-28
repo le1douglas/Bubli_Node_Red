@@ -3455,7 +3455,7 @@
         "type": "function",
         "z": "6ff0cb430fba9048",
         "name": "set threshold",
-        "func": "let threshold = env.get(\"threshold\");\nlet value = msg.payload.response_body.readings.value;\n\nif (value >= threshold){\n    //over\n    node.send([msg, null])\n}else {\n    //under\n    node.send([null, msg])\n}\nreturn msg;",
+        "func": "let threshold = env.get(\"threshold\");\nlet value = msg.payload.response_body.readings.value;\n\nif (value >= threshold){\n    //over\n    node.send([msg, null])\n}else {\n    //under\n    node.send([null, msg])\n}",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
