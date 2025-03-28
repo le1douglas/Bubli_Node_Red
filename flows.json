@@ -593,7 +593,18 @@
                 ]
             }
         ],
-        "out": [],
+        "out": [
+            {
+                "x": 1040,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "68a8cf264b2ffcec",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [
             {
                 "name": "device_name",
@@ -3252,8 +3263,7 @@
         "y": 240,
         "wires": [
             [
-                "2b91d3c0cebe2079",
-                "5361375f765721e0"
+                "2b91d3c0cebe2079"
             ]
         ]
     },
@@ -3290,22 +3300,6 @@
                 "68a8cf264b2ffcec"
             ]
         ]
-    },
-    {
-        "id": "5361375f765721e0",
-        "type": "debug",
-        "z": "97038fdadf6243ee",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1080,
-        "y": 280,
-        "wires": []
     },
     {
         "id": "e0b8603bc2e349ac",
@@ -3514,7 +3508,7 @@
                 "type": "str"
             }
         ],
-        "x": 360,
+        "x": 420,
         "y": 420,
         "wires": [
             [],
@@ -3537,7 +3531,8 @@
         "y": 420,
         "wires": [
             [
-                "33df6aec1b838fc9"
+                "33df6aec1b838fc9",
+                "fbf7d21f9b9dd740"
             ]
         ]
     },
@@ -3952,7 +3947,44 @@
         "type": "subflow:97038fdadf6243ee",
         "z": "c1216b540b10bca8",
         "name": "",
+        "env": [
+            {
+                "name": "device_name",
+                "value": "TDR_THERMOHYGROMETER_MODULE",
+                "type": "str"
+            },
+            {
+                "name": "sensor_name",
+                "value": "TempAndRh_Sensor",
+                "type": "str"
+            },
+            {
+                "name": "send_error_notification",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
         "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "207db71d03aee566"
+            ]
+        ]
+    },
+    {
+        "id": "207db71d03aee566",
+        "type": "debug",
+        "z": "c1216b540b10bca8",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
         "y": 240,
         "wires": []
     },
