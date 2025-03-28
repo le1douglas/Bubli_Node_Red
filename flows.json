@@ -713,7 +713,7 @@
         ],
         "out": [
             {
-                "x": 720,
+                "x": 780,
                 "y": 60,
                 "wires": [
                     {
@@ -723,7 +723,7 @@
                 ]
             },
             {
-                "x": 720,
+                "x": 780,
                 "y": 100,
                 "wires": [
                     {
@@ -784,7 +784,14 @@
             }
         ],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "inputLabels": [
+            "Sensor reading"
+        ],
+        "outputLabels": [
+            "over threshold",
+            "under threshold"
+        ]
     },
     {
         "id": "6ee0f2ea30d16015",
@@ -3667,8 +3674,8 @@
                 "type": "str"
             }
         ],
-        "x": 1300,
-        "y": 400,
+        "x": 840,
+        "y": 340,
         "wires": [
             [],
             [],
@@ -3698,8 +3705,8 @@
                 "type": "str"
             }
         ],
-        "x": 1180,
-        "y": 520,
+        "x": 840,
+        "y": 500,
         "wires": [
             [],
             [],
@@ -3749,15 +3756,9 @@
         "x": 330,
         "y": 900,
         "wires": [
-            [
-                "8ef367f1c6482028"
-            ],
-            [
-                "8ef367f1c6482028"
-            ],
-            [
-                "8ef367f1c6482028"
-            ],
+            [],
+            [],
+            [],
             []
         ]
     },
@@ -3779,23 +3780,6 @@
                 "71c904177b6b7b7f"
             ]
         ]
-    },
-    {
-        "id": "8ef367f1c6482028",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 900,
-        "wires": []
     },
     {
         "id": "b361bb8515778be2",
@@ -4009,7 +3993,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 840,
