@@ -3646,19 +3646,6 @@
         ]
     },
     {
-        "id": "3b43b3cca9abea55",
-        "type": "link out",
-        "z": "c1216b540b10bca8",
-        "name": "on New reading recieved",
-        "mode": "link",
-        "links": [
-            "38b546b07dad6ada"
-        ],
-        "x": 1035,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "53d2cd9eda7fb270",
         "type": "subflow:6b5ddb850b89560b",
         "z": "c1216b540b10bca8",
@@ -3680,8 +3667,8 @@
                 "type": "str"
             }
         ],
-        "x": 1100,
-        "y": 100,
+        "x": 1300,
+        "y": 400,
         "wires": [
             [],
             [],
@@ -3711,8 +3698,8 @@
                 "type": "str"
             }
         ],
-        "x": 1100,
-        "y": 200,
+        "x": 1180,
+        "y": 520,
         "wires": [
             [],
             [],
@@ -3958,8 +3945,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 480,
+        "x": 580,
+        "y": 520,
         "wires": []
     },
     {
@@ -4003,7 +3990,7 @@
             }
         ],
         "x": 640,
-        "y": 380,
+        "y": 420,
         "wires": [
             [
                 "e12239afc97fc59e"
@@ -4025,8 +4012,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 860,
-        "y": 360,
+        "x": 840,
+        "y": 400,
         "wires": []
     },
     {
@@ -4041,8 +4028,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 860,
-        "y": 400,
+        "x": 840,
+        "y": 440,
         "wires": []
     },
     {
@@ -7366,43 +7353,5 @@
             [],
             []
         ]
-    },
-    {
-        "id": "43ac010b5db04b9c",
-        "type": "mqtt in",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "topic": "alerts",
-        "qos": "1",
-        "datatype": "json",
-        "broker": "76494be814e2c42d",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 350,
-        "y": 420,
-        "wires": [
-            [
-                "f3e4c6769615d3e9"
-            ]
-        ]
-    },
-    {
-        "id": "f3e4c6769615d3e9",
-        "type": "debug",
-        "z": "676aeb444dcdd8d6",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 400,
-        "wires": []
     }
 ]
