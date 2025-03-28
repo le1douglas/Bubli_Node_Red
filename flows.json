@@ -3968,6 +3968,11 @@
         "name": "",
         "env": [
             {
+                "name": "threshold",
+                "value": "55",
+                "type": "num"
+            },
+            {
                 "name": "hysteresis",
                 "value": "1",
                 "type": "num"
