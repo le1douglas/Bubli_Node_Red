@@ -563,17 +563,46 @@
             {
                 "name": "title",
                 "type": "str",
-                "value": ""
+                "value": "",
+                "ui": {
+                    "label": {
+                        "en-US": "Title"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
             },
             {
                 "name": "subtitle",
                 "type": "str",
-                "value": ""
+                "value": "",
+                "ui": {
+                    "label": {
+                        "en-US": "Subtitle"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
             },
             {
                 "name": "chatId",
                 "type": "env",
-                "value": "telegram_chat_id"
+                "value": "telegram_chat_id",
+                "ui": {
+                    "label": {
+                        "en-US": "Telegram Chat Id"
+                    }
+                }
             }
         ],
         "meta": {},
