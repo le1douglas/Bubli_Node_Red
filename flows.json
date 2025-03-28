@@ -7180,5 +7180,43 @@
             [],
             []
         ]
+    },
+    {
+        "id": "43ac010b5db04b9c",
+        "type": "mqtt in",
+        "z": "676aeb444dcdd8d6",
+        "name": "",
+        "topic": "alerts",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "76494be814e2c42d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "f3e4c6769615d3e9"
+            ]
+        ]
+    },
+    {
+        "id": "f3e4c6769615d3e9",
+        "type": "debug",
+        "z": "676aeb444dcdd8d6",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 400,
+        "wires": []
     }
 ]
