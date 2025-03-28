@@ -695,6 +695,98 @@
         }
     },
     {
+        "id": "6ff0cb430fba9048",
+        "type": "subflow",
+        "name": "Sensor Threshold",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "aab9d2202f7a7983"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 720,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "ab78e0d537cf4d09",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 720,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "ab78e0d537cf4d09",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "reading_type",
+                "type": "str",
+                "value": "humidity",
+                "ui": {
+                    "label": {
+                        "en-US": "Reading Type"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "threshold",
+                "type": "num",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "hysteresis",
+                "type": "num",
+                "value": "",
+                "ui": {
+                    "label": {
+                        "en-US": "Hysteresis"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "6ee0f2ea30d16015",
         "type": "group",
         "z": "ee81bdc633abbb7c",
@@ -3314,6 +3406,70 @@
         ]
     },
     {
+        "id": "aab9d2202f7a7983",
+        "type": "switch",
+        "z": "6ff0cb430fba9048",
+        "name": "if reading_type",
+        "property": "payload.response_body.readings.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "reading_type",
+                "vt": "env"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 240,
+        "y": 80,
+        "wires": [
+            [
+                "faccacdd7dccd8a0"
+            ]
+        ]
+    },
+    {
+        "id": "faccacdd7dccd8a0",
+        "type": "rbe",
+        "z": "6ff0cb430fba9048",
+        "name": "",
+        "func": "deadband",
+        "gap": "1.5",
+        "start": "",
+        "inout": "out",
+        "septopics": false,
+        "property": "payload.response_body.readings.value",
+        "topi": "topic",
+        "x": 410,
+        "y": 80,
+        "wires": [
+            [
+                "ab78e0d537cf4d09"
+            ]
+        ]
+    },
+    {
+        "id": "ab78e0d537cf4d09",
+        "type": "function",
+        "z": "6ff0cb430fba9048",
+        "name": "set threshold",
+        "func": "let threshold = env.get(\"threshold\");\nlet value = msg.payload.response_body.readings.value;\n\nif (value >= threshold){\n    //over\n    node.send([msg, null])\n}else {\n    //under\n    node.send([null, msg])\n}\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
         "id": "e0b8603bc2e349ac",
         "type": "subflow:36160a387bc59014",
         "z": "c1216b540b10bca8",
@@ -3503,122 +3659,6 @@
         "wires": []
     },
     {
-        "id": "aab9d2202f7a7983",
-        "type": "switch",
-        "z": "c1216b540b10bca8",
-        "name": "if temp",
-        "property": "payload.response_body.readings.type",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "temp",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 870,
-        "y": 660,
-        "wires": [
-            [
-                "faccacdd7dccd8a0"
-            ]
-        ]
-    },
-    {
-        "id": "faccacdd7dccd8a0",
-        "type": "rbe",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "func": "deadband",
-        "gap": "1.5",
-        "start": "",
-        "inout": "out",
-        "septopics": false,
-        "property": "payload.response_body.readings.value",
-        "topi": "topic",
-        "x": 1050,
-        "y": 660,
-        "wires": [
-            [
-                "ab78e0d537cf4d09"
-            ]
-        ]
-    },
-    {
-        "id": "ab78e0d537cf4d09",
-        "type": "function",
-        "z": "c1216b540b10bca8",
-        "name": "set threshold",
-        "func": "let threshold = 22;\nlet value = msg.payload.response_body.readings.value;\n\nif (value >= threshold){\n    msg.payload = \"over\"\n}else {\n    msg.payload = \"under\"\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1210,
-        "y": 660,
-        "wires": [
-            [
-                "2ff6994e6687bfe8",
-                "7431ba50973780f7",
-                "6c1fec43f51156a4"
-            ]
-        ]
-    },
-    {
-        "id": "6c1fec43f51156a4",
-        "type": "switch",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "over",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "under",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1470,
-        "y": 660,
-        "wires": [
-            [
-                "53d2cd9eda7fb270"
-            ],
-            [
-                "1d2a73369b16f4b1"
-            ]
-        ]
-    },
-    {
-        "id": "2ff6994e6687bfe8",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 64",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1360,
-        "y": 700,
-        "wires": []
-    },
-    {
         "id": "53d2cd9eda7fb270",
         "type": "subflow:6b5ddb850b89560b",
         "z": "c1216b540b10bca8",
@@ -3640,8 +3680,8 @@
                 "type": "str"
             }
         ],
-        "x": 1660,
-        "y": 600,
+        "x": 1100,
+        "y": 100,
         "wires": [
             [],
             [],
@@ -3671,30 +3711,12 @@
                 "type": "str"
             }
         ],
-        "x": 1660,
-        "y": 700,
+        "x": 1100,
+        "y": 200,
         "wires": [
             [],
             [],
             [],
-            []
-        ]
-    },
-    {
-        "id": "7431ba50973780f7",
-        "type": "rbe",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "func": "rbe",
-        "gap": "",
-        "start": "",
-        "inout": "out",
-        "septopics": false,
-        "property": "payload",
-        "topi": "topic",
-        "x": 1350,
-        "y": 620,
-        "wires": [
             []
         ]
     },
@@ -3919,7 +3941,8 @@
         "y": 420,
         "wires": [
             [
-                "207db71d03aee566"
+                "207db71d03aee566",
+                "211883f554ffc58f"
             ]
         ]
     },
@@ -3935,8 +3958,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
-        "y": 420,
+        "x": 660,
+        "y": 480,
         "wires": []
     },
     {
@@ -3964,6 +3987,25 @@
         "x": 390,
         "y": 360,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "211883f554ffc58f",
+        "type": "subflow:6ff0cb430fba9048",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "env": [
+            {
+                "name": "hysteresis",
+                "value": "1",
+                "type": "num"
+            }
+        ],
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [],
             []
         ]
     },
