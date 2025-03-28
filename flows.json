@@ -596,7 +596,7 @@
         "out": [
             {
                 "x": 1040,
-                "y": 280,
+                "y": 300,
                 "wires": [
                     {
                         "id": "68a8cf264b2ffcec",
@@ -3120,7 +3120,7 @@
                 "44e3b723d5125cb3"
             ],
             [
-                "15950b8c1a0417cf"
+                "00169a0ca16de1d9"
             ],
             [
                 "44e3b723d5125cb3"
@@ -3205,29 +3205,6 @@
         ]
     },
     {
-        "id": "15950b8c1a0417cf",
-        "type": "switch",
-        "z": "97038fdadf6243ee",
-        "name": "if save_to_database",
-        "property": "save_to_database",
-        "propertyType": "env",
-        "rules": [
-            {
-                "t": "true"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 580,
-        "y": 240,
-        "wires": [
-            [
-                "00169a0ca16de1d9"
-            ]
-        ]
-    },
-    {
         "id": "2b91d3c0cebe2079",
         "type": "function",
         "z": "97038fdadf6243ee",
@@ -3239,7 +3216,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1110,
+        "x": 1210,
         "y": 240,
         "wires": [
             [
@@ -3259,11 +3236,11 @@
         "stream": false,
         "addname": "",
         "property": "payload.response_body.readings",
-        "x": 910,
+        "x": 710,
         "y": 240,
         "wires": [
             [
-                "2b91d3c0cebe2079"
+                "15950b8c1a0417cf"
             ]
         ]
     },
@@ -3281,7 +3258,7 @@
         "retentionPolicyV18Flux": "",
         "org": "${organization}",
         "bucket": "readings_raw",
-        "x": 1310,
+        "x": 1390,
         "y": 240,
         "wires": []
     },
@@ -3293,11 +3270,34 @@
         "property": "payload.response_body",
         "action": "obj",
         "pretty": false,
-        "x": 750,
+        "x": 550,
         "y": 240,
         "wires": [
             [
                 "68a8cf264b2ffcec"
+            ]
+        ]
+    },
+    {
+        "id": "15950b8c1a0417cf",
+        "type": "switch",
+        "z": "97038fdadf6243ee",
+        "name": "if save_to_database",
+        "property": "save_to_database",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            [
+                "2b91d3c0cebe2079"
             ]
         ]
     },
