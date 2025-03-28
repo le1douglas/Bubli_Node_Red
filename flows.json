@@ -542,6 +542,44 @@
         ]
     },
     {
+        "id": "98a9d68357488248",
+        "type": "subflow",
+        "name": "notification",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "c22e9d878d9f5668"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [
+            {
+                "name": "title",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "subtitle",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "chatId",
+                "type": "env",
+                "value": "telegram_chat_id"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "6ee0f2ea30d16015",
         "type": "group",
         "z": "ee81bdc633abbb7c",
@@ -2911,6 +2949,115 @@
         ]
     },
     {
+        "id": "c22e9d878d9f5668",
+        "type": "template",
+        "z": "98a9d68357488248",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "[{{env.title}}]\n{{env.subtitle}}\n________________\nvalue: {{payload.response_body.readings.value}}{{payload.response_body.readings.unit}}",
+        "output": "str",
+        "x": 200,
+        "y": 100,
+        "wires": [
+            [
+                "a522ac23fdd53c0e"
+            ]
+        ]
+    },
+    {
+        "id": "08477c0c3c38076f",
+        "type": "debug",
+        "z": "98a9d68357488248",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "dac9ac56ac61fc22",
+        "type": "change",
+        "z": "98a9d68357488248",
+        "name": "build telegram message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.chatId",
+                "pt": "msg",
+                "to": "chatId",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "payload.type",
+                "pt": "msg",
+                "to": "message",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "8f7ceb605f979ab5",
+                "08477c0c3c38076f"
+            ]
+        ]
+    },
+    {
+        "id": "8f7ceb605f979ab5",
+        "type": "telegram sender",
+        "z": "98a9d68357488248",
+        "name": "",
+        "bot": "51c69c4af9504f77",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a522ac23fdd53c0e",
+        "type": "debug",
+        "z": "98a9d68357488248",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 260,
+        "wires": []
+    },
+    {
         "id": "e0b8603bc2e349ac",
         "type": "subflow:36160a387bc59014",
         "z": "c1216b540b10bca8",
@@ -3469,11 +3616,9 @@
         "finalize": "",
         "libs": [],
         "x": 1290,
-        "y": 560,
+        "y": 380,
         "wires": [
-            [
-                "1d9833a1794f353a"
-            ]
+            []
         ]
     },
     {
@@ -3488,225 +3633,31 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1090,
-        "y": 560,
-        "wires": [
-            [
-                "446944be588d3795"
-            ]
-        ]
-    },
-    {
-        "id": "1d9833a1794f353a",
-        "type": "switch",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "property": "result.status",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "above_maximum",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "below_minimum",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1450,
-        "y": 560,
-        "wires": [
-            [
-                "5dffcc4be02127a6"
-            ],
-            [
-                "bc2415e512267d5c"
-            ]
-        ]
-    },
-    {
-        "id": "c22e9d878d9f5668",
-        "type": "template",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "field": "result",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "[{{result.title}}]\n{{result.subtitle}}\nvalue: {{result.value}}{{result.unit}}\n---------------------\n{{result.time}}",
-        "output": "str",
-        "x": 2020,
-        "y": 560,
+        "x": 1290,
+        "y": 440,
         "wires": [
             []
         ]
     },
     {
-        "id": "5dffcc4be02127a6",
-        "type": "change",
+        "id": "efd720e73796d09c",
+        "type": "subflow:6ff0cb430fba9048",
         "z": "c1216b540b10bca8",
         "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.subtitle",
-                "pt": "msg",
-                "to": "subtitle_above",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1640,
-        "y": 540,
-        "wires": [
-            [
-                "f196ddb9a171cc0b"
-            ]
-        ]
-    },
-    {
-        "id": "bc2415e512267d5c",
-        "type": "change",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.subtitle",
-                "pt": "msg",
-                "to": "subtitle_below",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1640,
-        "y": 580,
-        "wires": [
-            [
-                "f196ddb9a171cc0b"
-            ]
-        ]
-    },
-    {
-        "id": "f196ddb9a171cc0b",
-        "type": "change",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.title",
-                "pt": "msg",
-                "to": "title",
-                "tot": "env"
-            },
-            {
-                "t": "set",
-                "p": "result.time",
-                "pt": "msg",
-                "to": "object",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1840,
-        "y": 560,
-        "wires": [
-            [
-                "c22e9d878d9f5668"
-            ]
-        ]
-    },
-    {
-        "id": "08477c0c3c38076f",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2440,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "dac9ac56ac61fc22",
-        "type": "change",
-        "z": "c1216b540b10bca8",
-        "name": "build telegram message",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.content",
-                "pt": "msg",
-                "to": "result",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.chatId",
-                "pt": "msg",
-                "to": "1201591574",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.type",
-                "pt": "msg",
-                "to": "message",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2230,
-        "y": 540,
-        "wires": [
-            [
-                "8f7ceb605f979ab5",
-                "08477c0c3c38076f"
-            ]
-        ]
-    },
-    {
-        "id": "8f7ceb605f979ab5",
-        "type": "telegram sender",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "bot": "51c69c4af9504f77",
-        "haserroroutput": true,
-        "outputs": 2,
-        "x": 2460,
-        "y": 520,
+        "x": 1040,
+        "y": 320,
         "wires": [
             [],
             []
         ]
+    },
+    {
+        "id": "5fe199da7c4b395f",
+        "type": "subflow:98a9d68357488248",
+        "z": "c1216b540b10bca8",
+        "x": 1400,
+        "y": 620,
+        "wires": []
     },
     {
         "id": "b6e576c423d17e0e",
