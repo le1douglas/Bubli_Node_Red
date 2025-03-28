@@ -24,14 +24,6 @@
         "env": []
     },
     {
-        "id": "676aeb444dcdd8d6",
-        "type": "tab",
-        "label": "Notifications Flow",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "359c38d245e1747d",
         "type": "subflow",
         "name": "Ping device",
@@ -175,250 +167,6 @@
         "meta": {},
         "color": "#A6BBCF",
         "icon": "@flowfuse/node-red-dashboard/ui-gauge.svg"
-    },
-    {
-        "id": "2420f75c4c01f1de",
-        "type": "subflow",
-        "name": "build message when threshold",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "a5e2a8226152358e"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 1260,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "a80f580ab215d124",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "value_path",
-                "type": "str",
-                "value": "msg.payload[0].value",
-                "ui": {
-                    "icon": "font-awesome/fa-cube",
-                    "label": {
-                        "en-US": "Path of value"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "unit_path",
-                "type": "str",
-                "value": "msg.payload[1].unit",
-                "ui": {
-                    "icon": "font-awesome/fa-cube",
-                    "label": {
-                        "en-US": "Path of Measurement Unit"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "min",
-                "type": "num",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-chevron-left",
-                    "label": {
-                        "en-US": "Min value"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "max",
-                "type": "num",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-chevron-right",
-                    "label": {
-                        "en-US": "Max value"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "title",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-commenting-o",
-                    "label": {
-                        "en-US": "Message Title"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "subtitle_below",
-                "type": "str",
-                "value": "value is too low!",
-                "ui": {
-                    "icon": "font-awesome/fa-commenting-o",
-                    "label": {
-                        "en-US": "Message Subtitle (Too Low)"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "subtitle_above",
-                "type": "str",
-                "value": "value is too high!",
-                "ui": {
-                    "icon": "font-awesome/fa-commenting-o",
-                    "label": {
-                        "en-US": "Message Subtitle (Too High)"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "780f7e06d7eb6c70",
-        "type": "subflow",
-        "name": "Sensor Reading Filter",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 80,
-                "y": 140,
-                "wires": [
-                    {
-                        "id": "5c6b417bcc6b87a7"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 560,
-                "y": 140,
-                "wires": [
-                    {
-                        "id": "5c6b417bcc6b87a7",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "device_name",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-cubes",
-                    "label": {
-                        "en-US": "Device"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "sensor_name",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-cube",
-                    "label": {
-                        "en-US": "Sensor"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "description",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-thermometer-three-quarters",
-                    "label": {
-                        "en-US": "Description"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str",
-                            "env"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {},
-        "color": "#DDAA99"
     },
     {
         "id": "6b5ddb850b89560b",
@@ -2516,220 +2264,6 @@
         "wires": []
     },
     {
-        "id": "2839fbec2403752a",
-        "type": "function",
-        "z": "2420f75c4c01f1de",
-        "name": "threshold detector",
-        "func": "\n// Retrieve previous state\nlet lastState = context.get(\"lastState\") ?? \"inside\"; // Possible values: \"inside\", \"below\", \"above\"\n\nlet value = msg.result.value;\nmsg.result.status = null;\n\nif (value < env.get(\"min\")) {\n    if (lastState === \"inside\" || lastState === \"above\") {\n        // Value moved from inside or from above to below minValue\n        msg.result.status = \"below_minimum\";\n    }\n    lastState = \"below\";\n} else if (value > env.get(\"max\")) {\n    if (lastState === \"inside\" || lastState === \"below\") {\n        // Value moved from inside or from below to above maxValue\n        msg.result.status = \"above_maximum\";\n    }\n    lastState = \"above\";\n} else {\n    // Value is inside the range\n    if (lastState !== \"inside\") {\n        lastState = \"inside\";\n    }\n}\n\n// Store updated state\ncontext.set(\"lastState\", lastState);\n\n// Return the message only if a transition was detected\nreturn msg.result.status ? [msg] : null;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 80,
-        "wires": [
-            [
-                "dae217947b2a9628"
-            ]
-        ]
-    },
-    {
-        "id": "a5e2a8226152358e",
-        "type": "function",
-        "z": "2420f75c4c01f1de",
-        "name": "get value from path",
-        "func": "msg = {\n    result: {\n        value: RED.util.getMessageProperty(msg, env.get(\"value_path\")),\n        unit: RED.util.getMessageProperty(msg, env.get(\"unit_path\"))\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 210,
-        "y": 80,
-        "wires": [
-            [
-                "2839fbec2403752a"
-            ]
-        ]
-    },
-    {
-        "id": "dae217947b2a9628",
-        "type": "switch",
-        "z": "2420f75c4c01f1de",
-        "name": "",
-        "property": "result.status",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "above_maximum",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "below_minimum",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 570,
-        "y": 80,
-        "wires": [
-            [
-                "b65c0c69f997f246"
-            ],
-            [
-                "1b8bebbfb7c1ef93"
-            ]
-        ]
-    },
-    {
-        "id": "a80f580ab215d124",
-        "type": "template",
-        "z": "2420f75c4c01f1de",
-        "name": "",
-        "field": "result",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "[{{result.title}}]\n{{result.subtitle}}\nvalue: {{result.value}}{{result.unit}}\n---------------------\n{{result.time}}",
-        "output": "str",
-        "x": 1140,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b65c0c69f997f246",
-        "type": "change",
-        "z": "2420f75c4c01f1de",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.subtitle",
-                "pt": "msg",
-                "to": "subtitle_above",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 760,
-        "y": 60,
-        "wires": [
-            [
-                "898f114b5a2a5512"
-            ]
-        ]
-    },
-    {
-        "id": "1b8bebbfb7c1ef93",
-        "type": "change",
-        "z": "2420f75c4c01f1de",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.subtitle",
-                "pt": "msg",
-                "to": "subtitle_below",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 760,
-        "y": 100,
-        "wires": [
-            [
-                "898f114b5a2a5512"
-            ]
-        ]
-    },
-    {
-        "id": "898f114b5a2a5512",
-        "type": "change",
-        "z": "2420f75c4c01f1de",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "result.title",
-                "pt": "msg",
-                "to": "title",
-                "tot": "env"
-            },
-            {
-                "t": "set",
-                "p": "result.time",
-                "pt": "msg",
-                "to": "object",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 960,
-        "y": 80,
-        "wires": [
-            [
-                "a80f580ab215d124"
-            ]
-        ]
-    },
-    {
-        "id": "5c6b417bcc6b87a7",
-        "type": "function",
-        "z": "780f7e06d7eb6c70",
-        "name": "filter",
-        "func": "if (msg.payload[1].device_name == env.get(\"device_name\")\n    && msg.payload[1].sensor_name == env.get(\"sensor_name\")\n    && msg.payload[1].description == env.get(\"description\")) {\n    return msg;\n}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "69429da752381f06",
-        "type": "function",
-        "z": "780f7e06d7eb6c70",
-        "name": "input object example",
-        "func": "return {\n    \"topic\": \"/reading\",\n    \"payload\": [\n        {\n            \"value\": 4\n        },\n        {\n            \"unit\": \"°C\",\n            \"device_name\": \"TDR_THERMOHYGROMETER_MODULE\",\n            \"sensor_name\": \"TempAndRh_Sensor\",\n            \"description\": \"temp\"\n        }\n    ],\n    \"_msgid\": \"d23e84f7153865fd\",\n    \"measurement\": \"reading\",\n    \"_event\": \"node:8259a9a149738b3d\"\n}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "6162d53105800a08",
         "type": "function",
         "z": "6b5ddb850b89560b",
@@ -3929,8 +3463,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 520,
+        "x": 620,
+        "y": 460,
         "wires": []
     },
     {
@@ -4021,6 +3555,258 @@
         "x": 840,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "446944be588d3795",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "threshold detector",
+        "func": "\n// Retrieve previous state\nlet lastState = context.get(\"lastState\") ?? \"inside\"; // Possible values: \"inside\", \"below\", \"above\"\n\nlet value = msg.result.value;\nmsg.result.status = null;\n\nif (value < env.get(\"min\")) {\n    if (lastState === \"inside\" || lastState === \"above\") {\n        // Value moved from inside or from above to below minValue\n        msg.result.status = \"below_minimum\";\n    }\n    lastState = \"below\";\n} else if (value > env.get(\"max\")) {\n    if (lastState === \"inside\" || lastState === \"below\") {\n        // Value moved from inside or from below to above maxValue\n        msg.result.status = \"above_maximum\";\n    }\n    lastState = \"above\";\n} else {\n    // Value is inside the range\n    if (lastState !== \"inside\") {\n        lastState = \"inside\";\n    }\n}\n\n// Store updated state\ncontext.set(\"lastState\", lastState);\n\n// Return the message only if a transition was detected\nreturn msg.result.status ? [msg] : null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 560,
+        "wires": [
+            [
+                "1d9833a1794f353a"
+            ]
+        ]
+    },
+    {
+        "id": "ebd0496a7ec8ab7c",
+        "type": "function",
+        "z": "c1216b540b10bca8",
+        "name": "get value from path",
+        "func": "msg = {\n    result: {\n        value: RED.util.getMessageProperty(msg, env.get(\"value_path\")),\n        unit: RED.util.getMessageProperty(msg, env.get(\"unit_path\"))\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 560,
+        "wires": [
+            [
+                "446944be588d3795"
+            ]
+        ]
+    },
+    {
+        "id": "1d9833a1794f353a",
+        "type": "switch",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "property": "result.status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "above_maximum",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "below_minimum",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1450,
+        "y": 560,
+        "wires": [
+            [
+                "5dffcc4be02127a6"
+            ],
+            [
+                "bc2415e512267d5c"
+            ]
+        ]
+    },
+    {
+        "id": "c22e9d878d9f5668",
+        "type": "template",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "field": "result",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "[{{result.title}}]\n{{result.subtitle}}\nvalue: {{result.value}}{{result.unit}}\n---------------------\n{{result.time}}",
+        "output": "str",
+        "x": 2020,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5dffcc4be02127a6",
+        "type": "change",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "result.subtitle",
+                "pt": "msg",
+                "to": "subtitle_above",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1640,
+        "y": 540,
+        "wires": [
+            [
+                "f196ddb9a171cc0b"
+            ]
+        ]
+    },
+    {
+        "id": "bc2415e512267d5c",
+        "type": "change",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "result.subtitle",
+                "pt": "msg",
+                "to": "subtitle_below",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1640,
+        "y": 580,
+        "wires": [
+            [
+                "f196ddb9a171cc0b"
+            ]
+        ]
+    },
+    {
+        "id": "f196ddb9a171cc0b",
+        "type": "change",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "result.title",
+                "pt": "msg",
+                "to": "title",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "result.time",
+                "pt": "msg",
+                "to": "object",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1840,
+        "y": 560,
+        "wires": [
+            [
+                "c22e9d878d9f5668"
+            ]
+        ]
+    },
+    {
+        "id": "08477c0c3c38076f",
+        "type": "debug",
+        "z": "c1216b540b10bca8",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2440,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "dac9ac56ac61fc22",
+        "type": "change",
+        "z": "c1216b540b10bca8",
+        "name": "build telegram message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "result",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.chatId",
+                "pt": "msg",
+                "to": "1201591574",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.type",
+                "pt": "msg",
+                "to": "message",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2230,
+        "y": 540,
+        "wires": [
+            [
+                "8f7ceb605f979ab5",
+                "08477c0c3c38076f"
+            ]
+        ]
+    },
+    {
+        "id": "8f7ceb605f979ab5",
+        "type": "telegram sender",
+        "z": "c1216b540b10bca8",
+        "name": "",
+        "bot": "51c69c4af9504f77",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 2460,
+        "y": 520,
+        "wires": [
+            [],
+            []
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
@@ -6982,365 +6768,6 @@
         "x": 470,
         "y": 40,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "38b546b07dad6ada",
-        "type": "link in",
-        "z": "676aeb444dcdd8d6",
-        "name": "Notification flow",
-        "links": [
-            "3b43b3cca9abea55"
-        ],
-        "x": 105,
-        "y": 60,
-        "wires": [
-            [
-                "54eb8aaf15ec88d2",
-                "d822f588030d5972",
-                "3c09d9c26d5d365b",
-                "8e913ae4cce2cb48"
-            ]
-        ]
-    },
-    {
-        "id": "54eb8aaf15ec88d2",
-        "type": "debug",
-        "z": "676aeb444dcdd8d6",
-        "name": "debug 48",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 260,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "93d1c4a1539d4a7e",
-        "type": "debug",
-        "z": "676aeb444dcdd8d6",
-        "name": "debug 49",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1200,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "9a7bff1a41256b15",
-        "type": "subflow:2420f75c4c01f1de",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "env": [
-            {
-                "name": "min",
-                "value": "40",
-                "type": "num"
-            },
-            {
-                "name": "max",
-                "value": "60",
-                "type": "num"
-            },
-            {
-                "name": "title",
-                "value": "HUMIDTY ALERT",
-                "type": "str"
-            }
-        ],
-        "x": 710,
-        "y": 40,
-        "wires": [
-            [
-                "a94405716db4f451"
-            ]
-        ]
-    },
-    {
-        "id": "390d9a5e9ab4a008",
-        "type": "subflow:2420f75c4c01f1de",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "env": [
-            {
-                "name": "min",
-                "value": "17",
-                "type": "num"
-            },
-            {
-                "name": "max",
-                "value": "25",
-                "type": "num"
-            },
-            {
-                "name": "title",
-                "value": "TEMPERATURE ALERT",
-                "type": "str"
-            }
-        ],
-        "x": 710,
-        "y": 80,
-        "wires": [
-            [
-                "a94405716db4f451"
-            ]
-        ]
-    },
-    {
-        "id": "a94405716db4f451",
-        "type": "change",
-        "z": "676aeb444dcdd8d6",
-        "name": "build telegram message",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.content",
-                "pt": "msg",
-                "to": "result",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.chatId",
-                "pt": "msg",
-                "to": "1201591574",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.type",
-                "pt": "msg",
-                "to": "message",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 990,
-        "y": 80,
-        "wires": [
-            [
-                "b99b09ba7f5c2e94",
-                "93d1c4a1539d4a7e"
-            ]
-        ]
-    },
-    {
-        "id": "d822f588030d5972",
-        "type": "subflow:780f7e06d7eb6c70",
-        "z": "676aeb444dcdd8d6",
-        "name": "if humidity",
-        "env": [
-            {
-                "name": "device_name",
-                "value": "TDR_THERMOHYGROMETER_MODULE",
-                "type": "str"
-            },
-            {
-                "name": "sensor_name",
-                "value": "TempAndRh_Sensor",
-                "type": "str"
-            },
-            {
-                "name": "description",
-                "value": "humidity",
-                "type": "str"
-            }
-        ],
-        "x": 490,
-        "y": 40,
-        "wires": [
-            [
-                "9a7bff1a41256b15"
-            ]
-        ]
-    },
-    {
-        "id": "3c09d9c26d5d365b",
-        "type": "subflow:780f7e06d7eb6c70",
-        "z": "676aeb444dcdd8d6",
-        "name": "if temp",
-        "env": [
-            {
-                "name": "device_name",
-                "value": "TDR_THERMOHYGROMETER_MODULE",
-                "type": "str"
-            },
-            {
-                "name": "sensor_name",
-                "value": "TempAndRh_Sensor",
-                "type": "str"
-            },
-            {
-                "name": "description",
-                "value": "temp",
-                "type": "str"
-            }
-        ],
-        "x": 510,
-        "y": 80,
-        "wires": [
-            [
-                "390d9a5e9ab4a008"
-            ]
-        ]
-    },
-    {
-        "id": "7400fdf85dab1de0",
-        "type": "ui-dropdown",
-        "z": "676aeb444dcdd8d6",
-        "group": "b2798c6899bf4cc1",
-        "name": "",
-        "label": "Select Option:",
-        "tooltip": "",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "multiple": false,
-        "chips": false,
-        "clearable": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "typeIsComboBox": true,
-        "msgTrigger": "onChange",
-        "x": 500,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "703953455746c732",
-        "type": "inject",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "props": [
-            {
-                "p": "options",
-                "v": "[\"opt1\", \"opt2\"]",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 240,
-        "y": 240,
-        "wires": [
-            [
-                "7400fdf85dab1de0"
-            ]
-        ]
-    },
-    {
-        "id": "14b8f776d1c63232",
-        "type": "subflow:2420f75c4c01f1de",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "env": [
-            {
-                "name": "min",
-                "value": "35",
-                "type": "num"
-            },
-            {
-                "name": "max",
-                "value": "70",
-                "type": "num"
-            },
-            {
-                "name": "title",
-                "value": "PLANT WATERING",
-                "type": "str"
-            },
-            {
-                "name": "subtitle_below",
-                "value": "water level is too low!",
-                "type": "str"
-            },
-            {
-                "name": "subtitle_above",
-                "value": "water level is too high!",
-                "type": "str"
-            }
-        ],
-        "x": 710,
-        "y": 120,
-        "wires": [
-            [
-                "a94405716db4f451"
-            ]
-        ]
-    },
-    {
-        "id": "8e913ae4cce2cb48",
-        "type": "subflow:780f7e06d7eb6c70",
-        "z": "676aeb444dcdd8d6",
-        "name": "if humidity",
-        "env": [
-            {
-                "name": "device_name",
-                "value": "TDR_THERMOHYGROMETER_MODULE",
-                "type": "str"
-            },
-            {
-                "name": "sensor_name",
-                "value": "TDR_Sensor",
-                "type": "str"
-            },
-            {
-                "name": "description",
-                "value": "soil_hum",
-                "type": "str"
-            }
-        ],
-        "x": 490,
-        "y": 120,
-        "wires": [
-            [
-                "14b8f776d1c63232"
-            ]
-        ]
-    },
-    {
-        "id": "b99b09ba7f5c2e94",
-        "type": "telegram sender",
-        "z": "676aeb444dcdd8d6",
-        "name": "",
-        "bot": "51c69c4af9504f77",
-        "haserroroutput": true,
-        "outputs": 2,
-        "x": 1220,
-        "y": 60,
-        "wires": [
-            [],
             []
         ]
     }
