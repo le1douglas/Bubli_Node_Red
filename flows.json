@@ -3825,7 +3825,7 @@
             },
             {
                 "p": "measurement",
-                "v": "downsampled",
+                "v": "raw",
                 "vt": "str"
             }
         ],
