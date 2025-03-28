@@ -3453,9 +3453,7 @@
         "y": 360,
         "wires": [
             [],
-            [
-                "ce2e61ca926fa758"
-            ],
+            [],
             []
         ]
     },
@@ -3490,9 +3488,7 @@
         "y": 420,
         "wires": [
             [],
-            [
-                "ce2e61ca926fa758"
-            ],
+            [],
             []
         ]
     },
@@ -3527,98 +3523,6 @@
         "x": 1035,
         "y": 420,
         "wires": []
-    },
-    {
-        "id": "5283b8d25626b512",
-        "type": "function",
-        "z": "c1216b540b10bca8",
-        "name": "format for influx db",
-        "func": "let device_name = msg.payload.device_name\nlet sensor_name = msg.payload.response_body.sensor_name\n\nlet value = msg.payload.response_body.readings.value\nlet unit = msg.payload.response_body.readings.unit\nlet description = msg.payload.response_body.readings.type\n\nmsg.payload=  [\n        {\n            \"value\": parseFloat(value)\n        },\n        {\n            \"device_name\": device_name,\n            \"sensor_name\": sensor_name,\n            \"description\": description,\n            \"unit\": unit\n        }\n    ]\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 380,
-        "wires": [
-            [
-                "064079642dcd1e7d"
-            ]
-        ]
-    },
-    {
-        "id": "bec0195271c87917",
-        "type": "debug",
-        "z": "c1216b540b10bca8",
-        "name": "debug 59",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 880,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "93fdf6255f7184eb",
-        "type": "split",
-        "z": "c1216b540b10bca8",
-        "name": "split each reading",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload.response_body.readings",
-        "x": 710,
-        "y": 380,
-        "wires": [
-            [
-                "5283b8d25626b512",
-                "bec0195271c87917"
-            ]
-        ]
-    },
-    {
-        "id": "064079642dcd1e7d",
-        "type": "influxdb out",
-        "z": "c1216b540b10bca8",
-        "influxdb": "bb1f05320e11b457",
-        "name": "",
-        "measurement": "raw",
-        "precision": "ms",
-        "retentionPolicy": "",
-        "database": "database",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "${organization}",
-        "bucket": "readings_raw",
-        "x": 1130,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "ce2e61ca926fa758",
-        "type": "json",
-        "z": "c1216b540b10bca8",
-        "name": "",
-        "property": "payload.response_body",
-        "action": "obj",
-        "pretty": false,
-        "x": 550,
-        "y": 380,
-        "wires": [
-            [
-                "93fdf6255f7184eb"
-            ]
-        ]
     },
     {
         "id": "aab9d2202f7a7983",
