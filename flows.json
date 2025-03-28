@@ -3457,66 +3457,6 @@
         ]
     },
     {
-        "id": "f838dfe0e453767b",
-        "type": "subflow:6b5ddb850b89560b",
-        "z": "c1216b540b10bca8",
-        "name": "TDR_Sensor",
-        "env": [
-            {
-                "name": "device_name",
-                "value": "TDR_THERMOHYGROMETER_MODULE",
-                "type": "str"
-            },
-            {
-                "name": "request_title",
-                "value": "request_sensor_reading",
-                "type": "str"
-            },
-            {
-                "name": "request_body",
-                "value": "TDR_Sensor",
-                "type": "str"
-            }
-        ],
-        "x": 390,
-        "y": 360,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "33df6aec1b838fc9",
-        "type": "subflow:6b5ddb850b89560b",
-        "z": "c1216b540b10bca8",
-        "name": "TempAndRh_Sensor",
-        "env": [
-            {
-                "name": "device_name",
-                "value": "TDR_THERMOHYGROMETER_MODULE",
-                "type": "str"
-            },
-            {
-                "name": "request_title",
-                "value": "request_sensor_reading",
-                "type": "str"
-            },
-            {
-                "name": "request_body",
-                "value": "TempAndRh_Sensor",
-                "type": "str"
-            }
-        ],
-        "x": 420,
-        "y": 420,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
         "id": "065db4f918654301",
         "type": "inject",
         "z": "c1216b540b10bca8",
@@ -3756,7 +3696,9 @@
         "x": 150,
         "y": 360,
         "wires": [
-            []
+            [
+                "74344673cf66a28d"
+            ]
         ]
     },
     {
@@ -3945,7 +3887,7 @@
         "id": "fbf7d21f9b9dd740",
         "type": "subflow:97038fdadf6243ee",
         "z": "c1216b540b10bca8",
-        "name": "",
+        "name": "TempAndRh_Sensor",
         "env": [
             {
                 "name": "device_name",
@@ -3963,8 +3905,8 @@
                 "type": "bool"
             }
         ],
-        "x": 430,
-        "y": 240,
+        "x": 410,
+        "y": 420,
         "wires": [
             [
                 "207db71d03aee566"
@@ -3983,9 +3925,37 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 240,
+        "x": 600,
+        "y": 420,
         "wires": []
+    },
+    {
+        "id": "74344673cf66a28d",
+        "type": "subflow:97038fdadf6243ee",
+        "z": "c1216b540b10bca8",
+        "name": "TempAndRh_Sensor",
+        "env": [
+            {
+                "name": "device_name",
+                "value": "TDR_THERMOHYGROMETER_MODULE",
+                "type": "str"
+            },
+            {
+                "name": "sensor_name",
+                "value": "TDR_Sensor",
+                "type": "str"
+            },
+            {
+                "name": "send_error_notification",
+                "value": "false",
+                "type": "bool"
+            }
+        ],
+        "x": 410,
+        "y": 360,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "b6e576c423d17e0e",
