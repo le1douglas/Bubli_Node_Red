@@ -5139,12 +5139,12 @@
         "env": [
             {
                 "name": "max_failed_ping",
-                "value": "3",
+                "value": "10",
                 "type": "num"
             },
             {
                 "name": "max_response_time",
-                "value": "2",
+                "value": "5",
                 "type": "num"
             }
         ],
