@@ -906,56 +906,6 @@
         }
     },
     {
-        "id": "c35fac764fa650c3",
-        "type": "ui-page",
-        "name": "Alerts",
-        "ui": "589dd8c960567a01",
-        "path": "/alerts",
-        "icon": "alert-decagram",
-        "layout": "grid",
-        "theme": "0181503f75b7a1e0",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": 3,
-        "className": "",
-        "visible": "true",
-        "disabled": "false"
-    },
-    {
-        "id": "b2798c6899bf4cc1",
-        "type": "ui-group",
-        "name": "Select",
-        "page": "c35fac764fa650c3",
-        "width": "6",
-        "height": "1",
-        "order": 1,
-        "showTitle": false,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
         "id": "ef54a0bf43ed426c",
         "type": "global-config",
         "name": "global-config",
@@ -1008,7 +958,7 @@
                 "cols": "12"
             }
         ],
-        "order": 4,
+        "order": 3,
         "className": "",
         "visible": "true",
         "disabled": "false"
@@ -1036,56 +986,6 @@
         "height": "1",
         "order": 2,
         "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "08ee9ee87f0f2de3",
-        "type": "ui-page",
-        "name": "Commands",
-        "ui": "589dd8c960567a01",
-        "path": "/commands",
-        "icon": "invoice-text-arrow-right-outline",
-        "layout": "grid",
-        "theme": "0181503f75b7a1e0",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": 5,
-        "className": "",
-        "visible": false,
-        "disabled": false
-    },
-    {
-        "id": "f4cd6c5ea117a71a",
-        "type": "ui-group",
-        "name": "Commands Table",
-        "page": "08ee9ee87f0f2de3",
-        "width": "12",
-        "height": "1",
-        "order": 1,
-        "showTitle": false,
         "className": "",
         "visible": "true",
         "disabled": "false",
